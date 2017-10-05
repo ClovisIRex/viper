@@ -2,6 +2,8 @@ import argparse
 
 import sys
 
+import viper
+
 
 def main(args=None):
     """
@@ -12,6 +14,9 @@ def main(args=None):
     parser = argparse.ArgumentParser(
         description="Packaging made easier than it needs to be."
     )
+    parser.add_argument(
+        "-V", "--version", version="%(prog)s {}".format(viper.__version__),
+        action="version")
     parser.add_argument("-v", "--verbose", help="increase output verbosity",
                         action="store_true")
 
