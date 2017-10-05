@@ -1,5 +1,7 @@
 import argparse
 
+import sys
+
 
 def main(args=None):
     """
@@ -17,6 +19,11 @@ def main(args=None):
         args = parser.parse_args(args)
     else:
         args = parser.parse_args()
+
+    # Display help and exit if no arguments passed
+    if len(sys.argv[1:]) == 0:
+        parser.print_help()
+        parser.exit(0)
 
     if args.verbose:
         print("verbosity enabled")
