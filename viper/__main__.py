@@ -1,8 +1,27 @@
 import argparse
-
 import sys
 
 import viper
+from viper.commands.freeze import FreezeCommand
+
+
+def _optional_commands(parser):
+    parser.add_argument(
+            "-V", "--version",
+            version="%(prog)s {}".format(viper.__version__),
+            action="version"
+        )
+    parser.add_argument(
+        "-v", "--verbose",
+        help="increase output verbosity",
+        action="store_true"
+    )
+    return parser
+
+
+def _main_commands(parser):
+    FreezeCommand(parser)
+    return parser
 
 
 def main(args=None):
@@ -14,16 +33,20 @@ def main(args=None):
     parser = argparse.ArgumentParser(
         description="Packaging made easier than it needs to be."
     )
-    parser.add_argument(
-        "-V", "--version", version="%(prog)s {}".format(viper.__version__),
-        action="version")
-    parser.add_argument("-v", "--verbose", help="increase output verbosity",
-                        action="store_true")
+    parser = _optional_commands(parser)
+
+    parser_commands = parser.add_subparsers(
+        title="Commands",
+        dest="commands"
+    )
+    parser_commands = _main_commands(parser_commands)
 
     if type(args) == list:
         args = parser.parse_args(args)
     else:
         args = parser.parse_args()
+
+    args.action()
 
     # Display help and exit if no arguments passed
     if len(sys.argv[1:]) == 0:

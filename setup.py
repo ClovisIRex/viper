@@ -35,7 +35,7 @@ def setup_package():
         author_email='viper-dev@googlegroups.com',
         license='MIT',
         url='https://github.com/ClovisIRex/viper',
-        classifier=[
+        classifiers=[
             'Development Status :: 1 - Planning',
             'Programming Language :: Python :: 3.6',
             'Environment :: Console',
