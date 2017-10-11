@@ -1,11 +1,17 @@
 sudo: false
 language: python
 python:
-  - "3.6.3"
-  - "3.5.4"
-  - "3.4.7"
-  - "3.3.7"
-  - "2.7.14"
+  - "pypy"
+  - "pypy3"
+  - "2.7"
+  - "3.6"
+  - "3.5"
+  - "3.4"
+  - "3.3"
+  - nightly
+allow_failures:
+  - "pypy3"
+  - nightly
 os:
   - linux
 git:
