@@ -35,7 +35,7 @@ def setup_package():
         author_email='viper-dev@googlegroups.com',
         license='MIT',
         url='https://github.com/ClovisIRex/viper',
-        classifier=[
+        classifiers=[
             'Development Status :: 1 - Planning',
             'Programming Language :: Python :: 3.6',
             'Environment :: Console',
@@ -51,11 +51,17 @@ def setup_package():
         },
         setup_requires=[
         ] + sphinx,
-        tests_require=[
-            'pytest',
-            'pytest-cov',
-            'pytest-runner'
-        ]
+        extras_require={
+            'TESTS': [
+                'pytest',
+                'pytest-cov',
+                'pytest-runner'
+            ],
+            'DOCS': [
+                'Sphinx',
+                'sphinx_rtd_theme'
+            ]
+        }
     )
 
 

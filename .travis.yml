@@ -1,0 +1,19 @@
+sudo: false
+language: python
+python:
+  - "3.6.3"
+  - "3.5.4"
+  - "3.4.7"
+  - "3.3.7"
+  - "2.7.14"
+os:
+  - linux
+git:
+  depth: 3
+branches:
+  only:
+  - /.*/
+install:
+  - pip install .[TESTS]
+script:
+  - pytest
