@@ -1,11 +1,18 @@
 sudo: false
 language: python
-python:
-  - "3.6.3"
-  - "3.5.4"
-  - "3.4.7"
-  - "3.3.7"
-  - "2.7.14"
+matrix:
+  fast_finish: true
+  include:
+    - python: "pypy"
+    - python: "pypy3"
+    - python: "2.7"
+    - python: "3.6"
+    - python: "3.5"
+    - python: "3.4"
+    - python: nightly
+  allow_failures:
+    - python: "pypy3"
+    - python: nightly
 os:
   - linux
 git:
