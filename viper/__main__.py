@@ -2,6 +2,7 @@ import argparse
 import sys
 
 import viper
+from viper.commands.bite import BiteCommand
 from viper.commands.freeze import FreezeCommand
 
 
@@ -21,6 +22,7 @@ def _optional_commands(parser):
 
 def _main_commands(parser):
     FreezeCommand(parser)
+    BiteCommand(parser)
     return parser
 
 
@@ -46,7 +48,10 @@ def main(args=None):
     else:
         args = parser.parse_args()
 
-    args.action()
+    try:
+        args.action(args)  # Investigate why this fails
+    except AttributeError:
+        pass
 
     # Display help and exit if no arguments passed
     if len(sys.argv[1:]) == 0:
@@ -55,6 +60,7 @@ def main(args=None):
 
     if args.verbose:
         print("verbosity enabled")
+
 
 if __name__ == "__main__":
     main()

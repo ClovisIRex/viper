@@ -11,8 +11,10 @@ class FreezeCommand(CommandFactory):
         parser_freeze.set_defaults(action=self.run)
 
     @staticmethod
-    def run():
-        pass
+    def run(args):
+        if args.verbose:
+            pass
+
 
 if __name__ == "__main__":
     FreezeCommand.run()
