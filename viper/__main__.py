@@ -2,6 +2,7 @@ import argparse
 import sys
 
 import viper
+from viper.backports import AliasedSubParsersAction
 from viper.commands.bite import BiteCommand
 from viper.commands.freeze import FreezeCommand
 
@@ -35,8 +36,11 @@ def main(args=None):
     parser = argparse.ArgumentParser(
         description="Packaging made easier than it needs to be."
     )
-    parser = _optional_commands(parser)
 
+    # Support aliases for python 2.7
+    parser.register('action', 'parsers', AliasedSubParsersAction)
+
+    parser = _optional_commands(parser)
     parser_commands = parser.add_subparsers(
         title="Commands",
         dest="commands"
