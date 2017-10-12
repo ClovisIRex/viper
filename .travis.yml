@@ -20,6 +20,14 @@ git:
 branches:
   only:
   - /.*/
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/4c0c9367f6aa1dea6478
+    on_success: change
+    on_failure: always
+    on_start: never
+on_start: never
 install:
   - pip install .[TESTS]
 script:

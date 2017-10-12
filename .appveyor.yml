@@ -37,6 +37,14 @@ environment:
 platform:
   - x64
 
+notifications:
+  - provider: Webhook
+    url: https://webhooks.gitter.im/e/bd85fc14858ff29b75ae
+
+    on_build_success: false
+    on_build_failure: true
+    on_build_status_changed: true
+
 init:
   - "ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%"
 
