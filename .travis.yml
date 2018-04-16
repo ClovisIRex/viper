@@ -6,9 +6,8 @@ matrix:
     - python: "pypy"
     - python: "pypy3"
     - python: "2.7.14"
-    - python: "3.6.4"
-    - python: "3.5.4"
-    - python: "3.4.7"
+    - python: "3.6"
+    - python: "3.5"
     - python: nightly
   allow_failures:
     - python: "pypy3"
